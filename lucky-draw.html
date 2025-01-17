@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucky Draw</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Lucky Draw</h1>
+    
+    <!-- Number Meter for Lucky Draw -->
+    <div id="numberMeter">
+      <p>Drawing a 6-digit number between 000000 and 500000...</p>
+      <h2 id="drawnNumber">000000</h2>
+    </div>
+    
+    <!-- Buttons to Start and Stop the Draw -->
+    <button id="startButton" onclick="startDrawing()">Start</button>
+    <button id="stopButton" onclick="stopDrawing()" disabled>Stop</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
