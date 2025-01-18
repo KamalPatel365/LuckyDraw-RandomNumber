@@ -3,10 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lucky Draw</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Odometer Rolling</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
 </head>
 <body>
+
+  <!-- Audio element to load the sound -->
+  <audio id="rollSound" src="source/sm-roller-loop-Audio.mp3" loop></audio> <!-- Replace with the correct file path -->
+  <audio id="tadaSound" src="source/game-tada.mp3"></audio>
+  <audio id="backgroundAudio" loop>
+    <source src="source/brazil-carnival-festival-theme.mp3" type="audio/mp3">
+  </audio>
+  
+  <!-- Odometer container -->
   <div class="odometer-container">
     <div id="odometer">
       <div class="digit-container">
@@ -29,10 +38,18 @@
       </div>
     </div>
   </div>
-  <div class="controls">
-    <button id="startButton">Start</button>
-    <button id="stopButton">Stop</button>
+
+  <!-- Start and Stop buttons -->
+  <button id="startButton">Start</button>&nbsp;&nbsp;&nbsp;&nbsp;
+  <button id="stopButton">Stop</button>&nbsp;&nbsp;&nbsp;&nbsp;
+  <button id="resetButton">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <!-- Speaker Icon to start audio -->
+  <div id="speakerIcon" style="cursor: pointer; font-size: 24px; text-align: center; margin-top: 20px;">
+    <span id="speakerText">🔊</span>
+    <p>Click to start audio</p>
   </div>
-  <script src="script.js"></script>
+
+  <script src="script.js"></script> <!-- Your JavaScript file -->
 </body>
 </html>

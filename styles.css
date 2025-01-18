@@ -1,65 +1,103 @@
-body {
-  font-family: 'Roboto', sans-serif; /* More modern font */
-  text-align: center;
-  background-color: #e5e5e5; /* Light gray background for contrast */
-  padding: 50px;
-}
 
-.odometer-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-  position: relative;
-  z-index: 10;
-}
+    /* Basic CSS Setup */
+    body {
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      background-color: #e5e5e5;
+      padding: 50px;
+    }
 
-#odometer {
-  display: flex;
-  font-size: 2.5rem;
-  font-weight: bold;
-  overflow: hidden;
-  border: 5px solid #154c79; /* Deep blue border */
-  background-color: #fff;
-  padding: 8px 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for a floating effect */
-}
+    #odometer {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 10;
+    }
 
-.digit-container {
-  position: relative;
-  width: 50px;
-  height: 60px;
-  overflow: hidden;
-  margin: 0 4px; /* Slightly more space between digits */
-  border: 1px solid #8d6063; /* Soft reddish border around each digit container */
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
+    .digit-container {
+      position: relative;
+      width: 100px; /* Slot width */
+      height: 100px; /* Slot height */
+      overflow: hidden;
+      margin: 0 5px;
+      border: 1px solid #8d6063;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
 
-.digit-container .digit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  text-align: center;
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth easing for the roll */
-}
+    .digit-container .digit {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      text-align: center;
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-.digit-container div {
-  height: 60px; /* Match container height */
-  line-height: 60px; /* Center-align number vertically */
-  font-size: 2rem; /* Increase font size for better visibility */
-  font-family: 'Roboto', sans-serif;
-  color: #154c79; /* Deep blue for digit color */
-}
+    .digit-container div {
+      height: 100px;
+      line-height: 100px;
+      font-size: 6rem;
+      font-family: 'Roboto', sans-serif;
+      color: #154c79;
+    }
 
-.digit-container div:nth-child(even) {
-  background-color: #8d6063; /* Soft reddish background for alternating digits */
-  color: #fff; /* White text for contrast */
-}
+    .digit-container div:nth-child(even) {
+      background-color: #8d6063;
+      color: #fff;
+    }
 
-.digit-container div:nth-child(odd) {
-  background-color: #154c79; /* Deep blue background for alternating digits */
-  color: #fff; /* White text for contrast */
-}
+    .digit-container div:nth-child(odd) {
+      background-color: #154c79;
+      color: #fff;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    #startButton {
+      padding: 10px 20px;
+      background-color: #16f358;
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #stopButton {
+      padding: 10px 20px;
+      background-color: #ff1919;
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #resetButton {
+      padding: 10px 20px;
+      background-color: #ffd51d;
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #8d6063;
+    }
+    button:disabled {
+      opacity: 0.3; /* Makes the button semi-transparent */
+      pointer-events: none; /* Disables clicking on the button */
+      transition: opacity 0.3s ease; /* Adds a smooth transition for the opacity */
+    }
+    
+    button {
+      transition: opacity 0.3s ease; /* Smooth transition for normal button states */
+    }
+    
