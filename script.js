@@ -8,20 +8,23 @@ const speakerText = document.getElementById("speakerText");
 let rollingIntervals = [];
 let isRolling = false;
 let isStopping = false;
-let isAudioStarted = false; // Track whether the audio has started
+let isAudioPlaying = false; // Track whether the audio has started
 
-// Start background audio when the speaker icon is clicked
+// Mute/Unmute functionality for the speaker icon
 speakerIcon.addEventListener("click", () => {
-  if (!isAudioStarted) {
+  if (isAudioPlaying) {
+    // If audio is already playing, pause and reset
+    backgroundAudio.pause();
+    backgroundAudio.currentTime = 0; // Restart audio from beginning
+    speakerText.textContent = "🔇"; // Switch to mute icon
+  } else {
+    // If audio is not playing, play it
     backgroundAudio.play();
-    speakerText.textContent = "🔇"; // Change icon to mute
-    speakerIcon.style.cursor = "default"; // Disable further interaction with the icon
-    isAudioStarted = true;
-
-    // Enable the Start button once audio starts
-    document.getElementById("startButton").disabled = false;
+    speakerText.textContent = "🔊"; // Switch to speaker icon
   }
+  isAudioPlaying = !isAudioPlaying; // Toggle audio play state
 });
+
 
 // Ensure seamless looping by restarting the rolling sound manually
 rollSound.addEventListener("ended", () => {
