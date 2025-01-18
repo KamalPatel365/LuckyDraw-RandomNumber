@@ -7,20 +7,32 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Lucky Draw</h1>
-    
-    <!-- Number Meter for Lucky Draw -->
-    <div id="numberMeter">
-      <p>Drawing a 6-digit number between 000000 and 500000...</p>
-      <h2 id="drawnNumber">000000</h2>
+  <div class="odometer-container">
+    <div id="odometer">
+      <div class="digit-container">
+        <div class="digit"></div>
+      </div>
+      <div class="digit-container">
+        <div class="digit"></div>
+      </div>
+      <div class="digit-container">
+        <div class="digit"></div>
+      </div>
+      <div class="digit-container">
+        <div class="digit"></div>
+      </div>
+      <div class="digit-container">
+        <div class="digit"></div>
+      </div>
+      <div class="digit-container">
+        <div class="digit"></div>
+      </div>
     </div>
-    
-    <!-- Buttons to Start and Stop the Draw -->
-    <button id="startButton" onclick="startDrawing()">Start</button>
-    <button id="stopButton" onclick="stopDrawing()" disabled>Stop</button>
   </div>
-
-  <script src="app.js"></script>
+  <div class="controls">
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
