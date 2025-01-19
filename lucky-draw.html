@@ -57,20 +57,106 @@
   <div id="speakerIcon" style="cursor: pointer; font-size: 24px; text-align: center; margin-top: 20px;">
     <span id="speakerText" title="START / STOP">🔇</span> <!-- Default mute icon -->
 
-      <!-- Export to Excel Button -->
-    <button id="exportToExcelButton">
-      <img src="source/download.png" alt="Export to Excel Icon" title="Export to Excel"/>
-      <!-- <span>Export to Excel</span> -->
-    </button>
+    <span id="exportToExcel">
+        <!-- Export to Excel Button -->
+      <button id="exportToExcelButton">
+        <img src="source/download.png" alt="Export to Excel Icon" title="Export to Excel"/>
+        <!-- <span>Export to Excel</span> -->
+      </button>
+    </span>
   </div>
 
-  <div class="history-container">
-    <h3>History</h3>
-    <ul id="historyList"></ul>
+  <!-- Participant container with labels and readings -->
+  <div class="participants-container">
+    <div class="participant" id="participant1">
+      <span class="participant-label">Consolation Prize&nbsp; 1</span>
+      <span class="target-reading" id="reading1">______</span>
+    </div>
+    <div class="participant" id="participant2">
+      <span class="participant-label">Consolation Prize&nbsp; 2</span>
+      <span class="target-reading" id="reading2">______</span>
+    </div>
+    <div class="participant" id="participant3">
+      <span class="participant-label">Consolation Prize&nbsp; 3</span>
+      <span class="target-reading" id="reading3">______</span>
+    </div>
+    <div class="participant" id="participant4">
+      <span class="participant-label">Consolation Prize&nbsp; 4</span>
+      <span class="target-reading" id="reading4">______</span>
+    </div>
+    <div class="participant" id="participant5">
+      <span class="participant-label">Consolation Prize&nbsp; 5</span>
+      <span class="target-reading" id="reading5">______</span>
+    </div>
+    <div class="participant" id="participant6">
+      <span class="participant-label">Consolation Prize&nbsp; 6</span>
+      <span class="target-reading" id="reading6">______</span>
+    </div>
+    <div class="participant" id="participant7">
+      <span class="participant-label">Consolation Prize&nbsp; 7</span>
+      <span class="target-reading" id="reading7">______</span>
+    </div>
+    <div class="participant" id="participant8">
+      <span class="participant-label">Consolation Prize&nbsp; 8</span>
+      <span class="target-reading" id="reading8">______</span>
+    </div>
+    <div class="participant" id="participant9">
+      <span class="participant-label">Consolation Prize&nbsp; 9</span>
+      <span class="target-reading" id="reading9">______</span>
+    </div>
+    <div class="participant" id="participant10">
+      <span class="participant-label">Consolation Prize 10</span>
+      <span class="target-reading" id="reading10">______</span>
+    </div>
+    <div class="participant" id="participant11">
+      <span class="participant-label">Consolation Prize 11</span>
+      <span class="target-reading" id="reading11">______</span>
+    </div>
+    <div class="participant" id="participant12">
+      <span class="participant-label">Consolation Prize 12</span>
+      <span class="target-reading" id="reading12">______</span>
+    </div>
+    <div class="participant" id="participant13">
+      <span class="participant-label">Consolation Prize 13</span>
+      <span class="target-reading" id="reading13">______</span>
+    </div>
+    <div class="participant" id="participant14">
+      <span class="participant-label">Consolation Prize 14</span>
+      <span class="target-reading" id="reading14">______</span>
+    </div>
+    <div class="participant" id="participant15">
+      <span class="participant-label">Consolation Prize 15</span>
+      <span class="target-reading" id="reading15">______</span>
+    </div>
+    <div class="participant" id="participant16">
+      <span class="participant-label">Consolation Prize 16</span>
+      <span class="target-reading" id="reading16">______</span>
+    </div>
+    <div class="participant" id="participant17">
+      <span class="participant-label">Consolation Prize 17</span>
+      <span class="target-reading" id="reading17">______</span>
+    </div>
+    <div class="participant" id="participant18">
+      <span class="participant-label">Consolation Prize 18</span>
+      <span class="target-reading" id="reading18">______</span>
+    </div>
+    <div class="participant" id="participant19">
+      <span class="participant-label"><span style="color: rgb(35, 4, 209);">Third Prize</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="target-reading" id="reading19">______</span>
+    </div>
+    <div class="participant" id="participant20">
+      <span class="participant-label"><span style="color: rgb(201, 172, 12);">Second Prize</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="target-reading" id="reading20">______</span>
+    </div>
+    <div class="participant" id="participant21">
+      <span class="participant-label"><span style="color: rgb(61, 172, 28);">First Prize</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="target-reading" id="reading21">______</span>
+    </div>
   </div>
+
   
   <!-- History Display Section -->
-  <ul id="historyList" style="list-style-type: none; padding: 0; text-align: left; max-width: 500px; margin: auto;"></ul>
+  <!-- <ul id="historyList" style="list-style-type: none; padding: 0; text-align: left; max-width: 500px; margin: auto;"></ul> -->
   
  <!-- Confetti animation container -->
  <div id="confettiContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: none;"></div>
