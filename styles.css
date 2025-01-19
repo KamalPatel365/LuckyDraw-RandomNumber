@@ -1,103 +1,172 @@
+/* Basic CSS Setup */
+body {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  background-color: #e5e5e5;
+  padding: 50px;
+  background-image: url("source/wallpaperflare.com_wallpaper.jpg");;
+}
 
-    /* Basic CSS Setup */
-    body {
-      font-family: 'Roboto', sans-serif;
-      text-align: center;
-      background-color: #e5e5e5;
-      padding: 50px;
-    }
+/* Event banner styling */
+.event-banner {
+  position: relative;
+  width: 50%; /* Adjusted width */
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222; /* Fallback background color */
+  margin: 0 auto -150px auto; /* Center horizontally and overlap the odometer */
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: Add shadow */
+}
 
-    #odometer {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-      position: relative;
-      z-index: 10;
-    }
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill; /* Ensure the image covers the banner area */
+  z-index: 1;
+  border-radius: 10px; /* Match the event banner's rounded corners */
+}
 
-    .digit-container {
-      position: relative;
-      width: 100px; /* Slot width */
-      height: 100px; /* Slot height */
-      overflow: hidden;
-      margin: 0 5px;
-      border: 1px solid #8d6063;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
+.banner-text {
+  position: absolute;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
 
-    .digit-container .digit {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      text-align: center;
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
 
-    .digit-container div {
-      height: 100px;
-      line-height: 100px;
-      font-size: 6rem;
-      font-family: 'Roboto', sans-serif;
-      color: #154c79;
-    }
+/* Odometer styling */
+#odometer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4%;
+  position: relative;
+  z-index: 10; /* Ensure it appears above the banner */
+}
 
-    .digit-container div:nth-child(even) {
-      background-color: #8d6063;
-      color: #fff;
-    }
+.digit-container {
+  position: relative;
+  width: 100px; /* Slot width */
+  height: 100px; /* Slot height */
+  overflow: hidden;
+  margin: 0 5px;
+  border: 1px solid #8d6063;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 
-    .digit-container div:nth-child(odd) {
-      background-color: #154c79;
-      color: #fff;
-    }
+.digit-container .digit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    .button-container {
-      margin-top: 20px;
-    }
+.digit-container div {
+  height: 100px;
+  line-height: 100px;
+  font-size: 6rem;
+  font-family: 'Roboto', sans-serif;
+  color: #154c79;
+}
 
-    #startButton {
-      padding: 10px 20px;
-      background-color: #16f358;
-      color: white;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+.digit-container div:nth-child(even) {
+  background-color: #8d6063;
+  color: #fff;
+}
 
-    #stopButton {
-      padding: 10px 20px;
-      background-color: #ff1919;
-      color: white;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+.digit-container div:nth-child(odd) {
+  background-color: #154c79;
+  color: #fff;
+}
 
-    #resetButton {
-      padding: 10px 20px;
-      background-color: #ffd51d;
-      color: white;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+/* Buttons */
+.button-container {
+  margin-top: 20px;
+}
 
-    button:hover {
-      background-color: #8d6063;
-    }
-    button:disabled {
-      opacity: 0.3; /* Makes the button semi-transparent */
-      pointer-events: none; /* Disables clicking on the button */
-      transition: opacity 0.3s ease; /* Adds a smooth transition for the opacity */
-    }
-    
-    button {
-      transition: opacity 0.3s ease; /* Smooth transition for normal button states */
-    }
-    
+button {
+  padding: 10px 20px;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: opacity 0.3s ease;
+}
+
+#startButton {
+  background-color: #16f358;
+  color: white;
+}
+
+#stopButton {
+  background-color: #ff1919;
+  color: white;
+}
+
+#resetButton {
+  background-color: #ffd51d;
+  color: white;
+}
+
+button:hover {
+  background-color: #8d6063;
+}
+
+button:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* History container styling */
+.history-container {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 200px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Roboto', sans-serif;
+}
+
+.history-container h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #333;
+}
+
+#historyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto; /* Scrollable if history grows large */
+}
+
+#historyList li {
+  font-size: 1rem;
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  color: #154c79;
+  text-align: center;
+}
+
+#historyList li:nth-child(even) {
+  background-color: #8d6063;
+  color: white;
+}

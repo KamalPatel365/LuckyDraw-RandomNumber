@@ -8,13 +8,22 @@
 </head>
 <body>
 
-  <!-- Audio element to load the sound -->
+  <!-- Audio elements -->
   <audio id="rollSound" src="source/sm-roller-loop-Audio.mp3" loop></audio> <!-- Replace with the correct file path -->
   <audio id="tadaSound" src="source/game-tada.mp3"></audio>
   <audio id="backgroundAudio" loop>
     <source src="source/brazil-carnival-festival-theme.mp3" type="audio/mp3">
   </audio>
-  
+  <audio id="resetSound" src="source/game-countdown.mp3"></audio>
+  <audio id="clappingSound" src="source/applause-01-253125.mp3"></audio> <!-- Clapping sound file -->
+
+  <!-- Event Banner -->
+  <div class="event-banner">
+    <img src="source/banner-fun-fair-festival.jpg" alt="Event Banner" class="banner-image">
+    <!-- Add fallback text for the event -->
+    <!-- <h1 class="banner-text">Special Event Odometer</h1> -->
+  </div>
+
   <!-- Odometer container -->
   <div class="odometer-container">
     <div id="odometer">
@@ -44,12 +53,25 @@
   <button id="stopButton">Stop</button>&nbsp;&nbsp;&nbsp;&nbsp;
   <button id="resetButton">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;
 
-  <!-- Mute/Speaker Icon to toggle audio -->
+  <!-- Mute/Speaker Icon -->
   <div id="speakerIcon" style="cursor: pointer; font-size: 24px; text-align: center; margin-top: 20px;">
     <span id="speakerText">🔇</span> <!-- Default mute icon -->
-    <p>Click to unmute audio</p>
+    <p>Click to START/STOP music</p>
   </div>
 
+  <div class="history-container">
+    <h3>History</h3>
+    <ul id="historyList"></ul>
+  </div>
+  
+  <!-- History Display Section -->
+  <ul id="historyList" style="list-style-type: none; padding: 0; text-align: left; max-width: 500px; margin: auto;"></ul>
+  
+ <!-- Confetti animation container -->
+ <div id="confettiContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: none;"></div>
+
   <script src="script.js"></script> <!-- Your JavaScript file -->
+  <script src="xlsx.full.min.js"></script>
+  <script src="confetti.browser.min.js"></script> <!-- Confetti library -->
 </body>
 </html>
