@@ -74,36 +74,6 @@ function disableResetAndStop() {
   document.getElementById("startButton").disabled = false;
 }
 
-// Reference to the "Export to Excel" button (you need to add this in HTML)
-// Create the "Export to Excel" button
-const exportButton = document.createElement("button");
-exportButton.id = "exportToExcelButton"; // Set a unique ID for the button
-exportButton.style.padding = "10px 20px";
-exportButton.style.marginTop = "20px";
-exportButton.style.backgroundColor = "transparent";
-exportButton.style.backgroundImage = "source/download.png";
-exportButton.style.color = "white";
-exportButton.style.border = "none";
-exportButton.style.cursor = "pointer";
-exportButton.style.borderRadius = "5px";
-
-// Add an icon (PNG) inside the button
-const icon = document.createElement("img");
-icon.src = "source/download.png"; // Replace with the actual path to your PNG file
-// icon.alt = "Export to Excel Icon";
-icon.style.width = "20px"; // Set the width of the icon
-icon.style.height = "20px"; // Set the height of the icon
-icon.style.marginRight = "10px"; // Add spacing between the icon and text (optional)
-
-// Add text (optional, or leave out if you want only the icon)
-const text = document.createElement("span");
-// text.textContent = "Export to Excel";
-text.style.color = "white";
-
-// Append the icon and text to the button
-exportButton.appendChild(icon);
-exportButton.appendChild(text);
-
 // Append the button to the body
 document.body.appendChild(exportButton);
 

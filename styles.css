@@ -170,3 +170,26 @@ button:disabled {
   background-color: #8d6063;
   color: white;
 }
+
+/* Styling for the Export to Excel button */
+#exportToExcelButton {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white; /* Text color */
+}
+
+/* Icon inside the button */
+#exportToExcelButton img {
+  width: 20px; /* Icon width */
+  height: 20px; /* Icon height */
+  margin-left: 10px; /* Add spacing between text and icon */
+}
+
+/* Text inside the button */
+#exportToExcelButton span {
+  color: white; /* Text color */
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Odometer Rolling</title>
+  <title>MELA Lucky Draw</title>
   <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
 </head>
 <body>
@@ -55,8 +55,13 @@
 
   <!-- Mute/Speaker Icon -->
   <div id="speakerIcon" style="cursor: pointer; font-size: 24px; text-align: center; margin-top: 20px;">
-    <span id="speakerText">🔇</span> <!-- Default mute icon -->
-    <p>Click to START/STOP music</p>
+    <span id="speakerText" title="START / STOP">🔇</span> <!-- Default mute icon -->
+
+      <!-- Export to Excel Button -->
+    <button id="exportToExcelButton">
+      <img src="source/download.png" alt="Export to Excel Icon" title="Export to Excel"/>
+      <!-- <span>Export to Excel</span> -->
+    </button>
   </div>
 
   <div class="history-container">
