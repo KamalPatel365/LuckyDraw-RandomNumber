@@ -78,7 +78,12 @@ body {
   color: #154c79;
 }
 
-.digit-container div:nth-child(even) {
+.digit-container div {
+  background-color: #154c79;
+  color: #fff;
+}
+
+/* .digit-container div:nth-child(even) {
   background-color: #8d6063;
   color: #fff;
 }
@@ -86,7 +91,7 @@ body {
 .digit-container div:nth-child(odd) {
   background-color: #154c79;
   color: #fff;
-}
+} */
 
 /* Buttons */
 .button-container {

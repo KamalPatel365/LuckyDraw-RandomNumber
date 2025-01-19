@@ -39,8 +39,13 @@ rollSound.addEventListener("ended", () => {
 
 // Function to generate a random number between 0 and 500001
 const getRandomNumberInRange = (max) => {
-  const randomNumber = Math.floor(Math.random() * (max + 1)); // Inclusive of max
-  return String(randomNumber).padStart(6, "0"); // Add leading zeros for 6-digit format
+  let randomNumber;
+    do {
+      randomNumber = Math.floor(Math.random() * (max + 1)); // Inclusive of max
+      randomNumber = String(randomNumber).padStart(6, "0"); // Add leading zeros for 6-digit format
+    } while (historyData.includes(randomNumber)); // Regenerate if the number already exists in history
+
+  return randomNumber;
 };
 
 // Populate digits (0–9) for rolling
@@ -74,40 +79,9 @@ function disableResetAndStop() {
   document.getElementById("startButton").disabled = false;
 }
 
-// Append the button to the body
-document.body.appendChild(exportButton);
-
-
-// Add the data to history and update the Excel
-function addToHistory(number) {
-  historyData.push({ Timestamp: new Date().toLocaleString(), Number: number });
-
-  // Display in the History UI
-  const listItem = document.createElement("li");
-  listItem.textContent = number;
-  historyList.prepend(listItem); // Add to the top of the list
-}
-
-// Export data to an Excel file
-function exportToExcel() {
-  if (historyData.length === 0) {
-    alert("No data to export!");
-    return;
-  }
-
-  // Create a workbook and worksheet
-  const workbook = XLSX.utils.book_new();
-  const worksheet = XLSX.utils.json_to_sheet(historyData);
-
-  // Append worksheet to workbook
-  XLSX.utils.book_append_sheet(workbook, worksheet, "History");
-
-  // Export the workbook
-  XLSX.writeFile(workbook, "odometer_history.xlsx");
-}
 
 // Attach click event to the button
-exportButton.addEventListener("click", exportToExcel);
+exportToExcelButton.addEventListener("click", exportToExcel);
 
 // Start rolling numbers
 function startRolling() {
@@ -168,71 +142,83 @@ function exportToExcel() {
 
 // Stop rolling numbers gradually
 function stopRolling() {
-    if (!isRolling || isStopping) return; // Prevent if not rolling or already stopping
-    isStopping = true;
-    isRolling = false;
-  
-    // Stop the rolling sound
-    rollSound.pause();
-    rollSound.currentTime = 0; // Reset to the beginning for next play
-  
-    // Play the tada sound
-    tadaSound.currentTime = 0; // Ensure it starts from the beginning
-    tadaSound.play();
-  
-    const finalNumber = getRandomNumberInRange(500001); // Get final 6-digit stopping number
-    console.log(`Target Odometer Reading: ${finalNumber}`); // Log the target odometer reading
-  
-    let finalReading = ""; // To store the final odometer reading
-  
-    digitContainers.forEach((container, index) => {
+  if (!isRolling || isStopping) return; // Prevent if not rolling or already stopping
+  isStopping = true;
+  isRolling = false;
+
+  // Stop the rolling sound
+  rollSound.pause();
+  rollSound.currentTime = 0; // Reset to the beginning for next play
+
+  // Play the tada sound
+  tadaSound.currentTime = 0; // Ensure it starts from the beginning
+  tadaSound.play();
+
+  const finalNumber = getRandomNumberInRange(500001); // Get final 6-digit stopping number
+  console.log(`Target Odometer Reading: ${finalNumber}`); // Log the target odometer reading
+
+  let finalReading = ""; // To store the final odometer reading
+
+  digitContainers.forEach((container, index) => {
       const digit = container.querySelector(".digit");
       const targetDigit = parseInt(finalNumber[index]); // Get the digit at this position
       clearInterval(rollingIntervals[index]); // Stop fast rolling
-  
+
       // Gradual deceleration
       let position = parseInt(digit.style.transform.replace("translateY(-", "").replace("px)", "")) || 0;
       const finalStop = targetDigit * 100; // Adjust final position based on digit value (ensure correct stopping position)
       let speed = 20; // Initial speed for deceleration
-  
+
       const slowDown = setInterval(() => {
-        position += (finalStop - position) / 8; // Gradual reduction in movement
-        digit.style.transform = `translateY(-${Math.round(position)}px)`; // Apply vertical movement
-        digit.style.transition = `transform ${speed / 100}s ease-out`; // Smooth easing
-  
-        if (Math.abs(position - finalStop) < 1) {
-          digit.style.transform = `translateY(-${finalStop}px)`; // Ensure exact stop at target
-          clearInterval(slowDown); // Stop at the final position
-  
-          // Collect the digit for final odometer reading
-          finalReading += targetDigit;
-  
-          // Once all digits have stopped, log the odometer reading
-          if (finalReading.length === 6) {
-            console.log(`Final Odometer Reading: ${finalReading}`);
-  
-            // Add the final target number to the history list
-            addToHistory(finalNumber); // Add target number to history
-            disableStartAndStop(); // Disable buttons after stop
-            gameCount++; // Increment game count
-  
-            // If 5 games have been played, show confetti animation
-            if (gameCount >= maxGames) {
-                showConfetti(); // Show confetti
-                disableButtons(); // Disable buttons
-            }
+          position += (finalStop - position) / 8; // Gradual reduction in movement
+          digit.style.transform = `translateY(-${Math.round(position)}px)`; // Apply vertical movement
+          digit.style.transition = `transform ${speed / 100}s ease-out`; // Smooth easing
+
+          if (Math.abs(position - finalStop) < 1) {
+              digit.style.transform = `translateY(-${finalStop}px)`; // Ensure exact stop at target
+              clearInterval(slowDown); // Stop at the final position
+
+              // Collect the digit for final odometer reading
+              finalReading += targetDigit;
+
+              // Once all digits have stopped, log the odometer reading
+              if (finalReading.length === 6) {
+                  console.log(`Final Odometer Reading: ${finalReading}`);
+
+                  // Add the final target number to the history list
+                  addToHistory(finalNumber); // Add target number to history
+                  disableStartAndStop(); // Disable buttons after stop
+                  gameCount++; // Increment game count
+
+                  // If 5 games have been played, show confetti animation
+                  if (gameCount >= maxGames) {
+                      showConfetti(); // Show confetti
+                      disableButtons(); // Disable buttons
+                  }
+              }
           }
-        }
-  
-        // Increment speed for slower updates
-        speed += 2;
+
+          // Increment speed for slower updates
+          speed += 2;
       }, speed + index * 0.1); // Slightly stagger each digit's slowdown
-    });
-  }
+  });
+}
+
+// Disable buttons after 5 games
+function disableButtons() {
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach(button => {
+      // Disable all buttons except the "Export to Excel" button
+      if (button.id !== "exportToExcelButton") {
+          button.disabled = true; // Disable the button
+      }
+  });
+}
+
 
   function showConfetti() {
     // Launch confetti for 10 seconds
-    launchContinuousConfetti(10000);
+    launchContinuousConfetti(100000);
   
     // Play clapping sound
     clappingSound.currentTime = 0;
@@ -279,7 +265,7 @@ function resetMeter() {
   // Disable "Reset" and "Stop" buttons when reset is clicked
   disableResetAndStop();
 }
-function launchContinuousConfetti(duration = 10000) {
+function launchContinuousConfetti(duration = 100000) {
     const confettiContainer = document.createElement("div");
     confettiContainer.style.position = "fixed";
     confettiContainer.style.top = 0;
@@ -293,7 +279,7 @@ function launchContinuousConfetti(duration = 10000) {
     const endTime = Date.now() + duration; // Calculate end time
   
     const createConfetti = () => {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 20; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
         confetti.style.position = "absolute";
@@ -328,20 +314,20 @@ function launchContinuousConfetti(duration = 10000) {
   
   // Add this style to your CSS for confetti animation
   const confettiStyles = `
-  @keyframes fall {
-    0% {
-      transform: translateY(0) rotate(0deg);
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
     }
-    100% {
-      transform: translateY(100vh) rotate(360deg);
+    
+    .confetti {
+      position: absolute;
+      border-radius: 50%;
+      animation: fall 3s linear infinite;
     }
-  }
-  
-  .confetti {
-    position: absolute;
-    border-radius: 50%;
-    animation: fall 3s linear infinite;
-  }
   `;
   
   // Inject styles into the page
