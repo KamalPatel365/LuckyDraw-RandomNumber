@@ -52,8 +52,14 @@ const getRandomNumberInRange = (max) => {
   let randomNumber;
   do {
     randomNumber = Math.floor(Math.random() * (max + 1)); // Inclusive of max
-    randomNumber = String(randomNumber).padStart(6, "0"); // 6-digit format
-  } while (historyData.includes(randomNumber)); // Regenerate if already exists
+    // 1st place to change required for increase/decrease of digit
+    randomNumber = String(randomNumber).padStart(5, "0"); // 6-digit format
+  } while (
+    (randomNumber >= 4000 && randomNumber <= 5000) || // Exclude range 4000-5000
+    (randomNumber >= 15000 && randomNumber <= 19999) || // Exclude range 15000-19999
+    (randomNumber >= 25000 && randomNumber <= 29999) || // Exclude range 25000-29999
+    historyData.includes(randomNumber) // Ensure number is not already in history
+  ); // Regenerate if already exists
   return randomNumber;
 };
 
@@ -145,7 +151,8 @@ function stopRolling() {
   tadaSound.currentTime = 0;
   tadaSound.play();
 
-  const finalNumber = getRandomNumberInRange(500001); // 6-digit number
+  // 2nd place to change required for increase/decrease of digit
+  const finalNumber = getRandomNumberInRange(50001); // 6-digit number
   let finalReading = "";
 
   digitContainers.forEach((container, index) => {
@@ -167,7 +174,8 @@ function stopRolling() {
         clearInterval(slowDown);
         finalReading += targetDigit;
 
-        if (finalReading.length === 6) {
+        // 3rd place to change required for increase/decrease of digit
+        if (finalReading.length === 5) {
           addToHistory(finalNumber);
           disableStartAndStop();
           gameCount++;
