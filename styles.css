@@ -70,6 +70,29 @@ body {
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Blur effect when rolling starts */
+.digit-container .digit.blur div {
+  filter: blur(8px);
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Remove blur when rolling stops */
+.digit-container .digit.clear div {
+  filter: blur(0);
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Flash effect when number stops */
+@keyframes flashEffect {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.flash {
+  animation: flashEffect 0.2s 3;
+}
+
+
 .digit-container div {
   height: 100px;
   line-height: 100px;

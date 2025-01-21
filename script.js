@@ -108,7 +108,7 @@ function startRolling() {
 
     rollingIntervals[index] = setInterval(() => {
       position += 60; // Fast rolling speed
-      digit.style.transform = `translateY(-${position % 600}px)`;
+      digit.style.transform = `translateY(-${position % 1000}px)`; // show number whether 0-5 or 0-9 while rolling
       digit.style.transition = "none"; // Instant transition
     }, 10); // Fast speed for rolling
   });
