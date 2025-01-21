@@ -136,7 +136,7 @@ function exportToExcel() {
   const worksheet = XLSX.utils.json_to_sheet(historyData);
   XLSX.utils.book_append_sheet(workbook, worksheet, "History");
 
-  XLSX.writeFile(workbook, "odometer_history.xlsx");
+  XLSX.writeFile(workbook, "coupon_rolled_out.xlsx");
 }
 
 // Stop Rolling Numbers Gradually
