@@ -119,7 +119,7 @@ function addToHistory(finalNumber) {
   const timestamp = new Date().toLocaleString();
 
   if (gameCount < 21) {
-    historyData.push({ Participant: `Participant ${gameCount}`, TargetReading: finalNumber });
+    historyData.push({ Participant: `Participant ${gameCount}`, CouponNumber: finalNumber });
     const participantId = `reading${gameCount + 1}`;
     document.getElementById(participantId).textContent = finalNumber;
   }
